@@ -18,7 +18,7 @@
   - [**⚡ Outputs \& Actuators**](#-outputs--actuators)
 - [🖥️ Installation](#️-installation)
 - [🔌 Hardware Connections for Gas Leak Detection System](#-hardware-connections-for-gas-leak-detection-system)
-    - [1. MQ-2 Gas Sensor](#1-mq-2-gas-sensor)
+    - [1. MQ-6 Gas Sensor](#1-mq-6-gas-sensor)
     - [2. Exhaust Fan (PWM Control)](#2-exhaust-fan-pwm-control)
     - [3. LCD Display](#3-lcd-display)
     - [4. Buzzer Alert](#4-buzzer-alert)
@@ -34,7 +34,7 @@
 ## 📌 Project Overview  
 The **Smart Gas Leak Detection and Ventilation Control System** enhances safety in homes, kitchens, and industrial spaces by detecting gas leaks and triggering an exhaust fan to **prevent hazardous gas accumulation**.  
 
-It utilizes an **MQ-2 gas sensor** to detect leaks and automatically activates an **exhaust fan** when gas levels exceed a threshold, ensuring a **safe environment**.  
+It utilizes an **MQ-6 gas sensor** to detect leaks and automatically activates an **exhaust fan** when gas levels exceed a threshold, ensuring a **safe environment**.  
 
 ---
 
@@ -54,7 +54,7 @@ It utilizes an **MQ-2 gas sensor** to detect leaks and automatically activates a
 ## ⚙️ How It Works  
 
 ### 🔹 **Gas Leak Detection**  
-- The **MQ-2 gas sensor** continuously monitors the surroundings for **Methane, Butane, LPG, and smoke**.  
+- The **MQ-6 gas sensor** continuously monitors the surroundings for **Methane, Butane, LPG, and smoke**.  
 - If gas levels exceed a safety threshold, the **exhaust fan is triggered** to remove the gas.  
 
 ### 🔹 **LCD Display & Alerts**  
@@ -66,7 +66,7 @@ It utilizes an **MQ-2 gas sensor** to detect leaks and automatically activates a
 ## 🛠️ Components Used  
 
 ### **🔍 Sensors & Inputs**  
-- **MQ-2 Gas Sensor** – Detects hazardous gases like **Methane, Butane, LPG, and smoke**.  
+- **MQ-6 Gas Sensor** – Detects hazardous gases like **Methane, Butane, LPG, and smoke**.  
 
 ### **⚡ Outputs & Actuators**  
 - **PWM-controlled Exhaust Fan** – Automatically turns on when gas levels exceed the threshold.  
@@ -84,8 +84,8 @@ It utilizes an **MQ-2 gas sensor** to detect leaks and automatically activates a
 
 ## 🔌 Hardware Connections for Gas Leak Detection System
 
-#### 1. MQ-2 Gas Sensor
-- **Digital Output:** Connect the **DOUT** pin of the MQ-2 sensor to **RB0/INT (Pin 33 of PIC16F877A)**.
+#### 1. MQ-6 Gas Sensor
+- **Digital Output:** Connect the **DOUT** pin of the MQ-6 sensor to **RB0/INT (Pin 33 of PIC16F877A)**.
 - **Trigger Logic:** The system measures how long the sensor outputs a **HIGH signal** to determine gas concentration.
 
 
