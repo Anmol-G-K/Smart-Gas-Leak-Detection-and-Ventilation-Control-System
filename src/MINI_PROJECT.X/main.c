@@ -1,7 +1,7 @@
 #include <xc.h>
 #include <stdint.h>
-#include "lcd.h"
-#include "adc.h"
+#include "C:\Users\GNKRISHNAN\Documents\CODING\23EEE214_MCA\HEADERS\lcd.h"
+#include "C:\Users\GNKRISHNAN\Documents\CODING\23EEE214_MCA\HEADERS\adc.h"
 
 // Definitions
 #define RL_VALUE 10
@@ -12,8 +12,8 @@
 #define FP_SCALE (1 << FP_SHIFT)
 #define TO_FP(x) ((int16_t)((x) * FP_SCALE))
 #define FROM_FP(x) ((x) >> FP_SHIFT)
-#define PWM_FREQUENCY 1000  // 1kHz
-#define PWM_PERIOD (_XTAL_FREQ/(PWM_FREQUENCY*4)) // For 1kHz @ 20MHz
+#define PWM_FREQUENCY 5000  // 1kHz
+#define PWM_PERIOD (_XTAL_FREQ/(PWM_FREQUENCY*4)) // For 5kHz @ 20MHz
 
 // Add these gas concentration thresholds
 #define GAS_THRESHOLD_1 100   // PPM
@@ -57,10 +57,6 @@ const int16_t concentration_table[] = {
 };
 #define TABLE_SIZE (sizeof(concentration_table) / sizeof(concentration_table[0]) / 2)
 
-// Function declarations
-void system_init(void);
-uint16_t read_mq(void);
-void int_to_str(uint16_t value, char* buffer);
 
 void int_to_str(uint16_t value, char* buffer) {
     uint8_t i = 0;
@@ -204,7 +200,7 @@ void system_init(void) {
 void PWM_Initialize(void) {
     TRISC = 0x00;        // Set PORTC as output for PWM
     T2CON = 0x01;        // Timer2 ON, prescaler 1:4
-    PR2 = 0xF9;          // Set PWM period for 1kHz
+    PR2 = 0xF9;          // Set PWM period for 5kHz
     CCP1CON = 0x0F;      // PWM mode, all bits enabled
     CCPR1L = 0x00;       // Start with 0% duty cycle
     CCP1X = 0;
