@@ -1,7 +1,7 @@
 #include <xc.h>
 #include <stdint.h>
-#include "C:\Users\GNKRISHNAN\Documents\CODING\23EEE214_MCA\HEADERS\lcd.h"
-#include "C:\Users\GNKRISHNAN\Documents\CODING\23EEE214_MCA\HEADERS\adc.h"
+#include "lcd.h"
+#include "adc.h"
 
 // Definitions
 #define RL_VALUE 10
