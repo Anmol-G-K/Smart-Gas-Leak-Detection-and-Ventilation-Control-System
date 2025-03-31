@@ -124,38 +124,43 @@ It utilizes an **MQ-6 gas sensor** to detect leaks and automatically activates a
 ```mermaid
 graph TD;
     %% System Initialization
-    A[System Initialization] --> A1[Initialize Microcontroller & I/O]
-    A1 --> A2[Initialize LCD & Buzzer]
+    A[System Initialization] --> A1[Initialize Microcontroller and IO]
+    A1 --> A2[Initialize LCD ADC PWM and Buzzer Pin]
     A2 --> B[Main Loop]
 
     %% Main Loop
-    B --> C[Monitor Digital Output]
-    C --> D[Measure High Signal Duration]
-    D --> E[Compare with Thresholds]
-    E --> F[Control Fan & Buzzer]
-    F --> G[Update LCD Display]
-    G --> H[Delay & Repeat]
+    B --> C[Read Gas Sensor ADC Value]
+    C --> D[Calculate Sensor Resistance RS]
+    D --> E[Determine Gas Concentration PPM]
+    E --> F{Compare With Thresholds}
 
-    %% Decision Process for Fan & Buzzer Control
-    E -->|Long High Signal| H1[Fan: Max Speed] 
-    H1 --> H2[Buzzer: ON]
+    %% Decision Process for Fan and Buzzer Control
+    F -->|PPM < GAS_THRESHOLD_1| G1[Fan Off]
 
-    E -->|Medium High Signal| I1[Fan: Medium Speed]
-    I1 --> I2[Buzzer: OFF]
 
-    E -->|Short or No High Signal| J1[Fan: OFF]
-    J1 --> J2[Buzzer: OFF]
+    F -->|PPM < GAS_THRESHOLD_2| H1[Fan 25 Percent Duty Cycle]
+  
 
-    %% Display & Alarm Handling
-    G --> K1[Show Gas Level on LCD]
-    K1 --> K2[Show Fan & Alarm Status]
+    F -->|PPM < GAS_THRESHOLD_3| I1[Fan 50 Percent Duty Cycle]
 
-    H2 --> L1[Show Warning on LCD]
-    H2 --> L2[Trigger Buzzer Alarm]
 
-    J2 --> M[Show Normal Status]
+    F -->|PPM < GAS_THRESHOLD_4| J1[Fan 75 Percent Duty Cycle]
+
+    F -->|PPM >= GAS_THRESHOLD_5| K1[Fan 100 Percent Duty Cycle]
+    K1 --> K2[Buzzer On Alert]
+
+    %% Display and Logging
+    K2 --> L1[Trigger Warning on LCD]
+    L1 --> L2[Log PPM Value and Alert Status]
     
-    M --> H
+    G1 --> M[Update LCD Display with Normal Status]
+    H1 --> M
+    I1 --> M
+    J1 --> M
+    L2 --> M
+
+    M --> N[Delay and Repeat]
+
 ```
 ---
 

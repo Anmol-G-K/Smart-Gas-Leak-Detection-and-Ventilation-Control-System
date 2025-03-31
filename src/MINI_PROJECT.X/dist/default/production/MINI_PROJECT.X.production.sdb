@@ -1,0 +1,310 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"38 C:/Users/GNKRISHNAN/MPLABXProjects/MINI_PROJECT.X/final.c
+[v _main main `(v  1 e 1 0 ]
+"63
+[v _init_system init_system `(v  1 e 1 0 ]
+"70
+[v _init_pwm init_pwm `(v  1 e 1 0 ]
+"77
+[v _pwm_set_duty pwm_set_duty `(v  1 e 1 0 ]
+"87
+[v _read_adc read_adc `(ui  1 e 2 0 ]
+"98
+[v _calculate_lpg_ppm calculate_lpg_ppm `(ui  1 e 2 0 ]
+"114
+[v _check_gas_level check_gas_level `(v  1 e 1 0 ]
+"135
+[v _delay_ms delay_ms `(v  1 e 1 0 ]
+"139
+[v _Lcd_Print_Number Lcd_Print_Number `(v  1 e 1 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"39 C:\Users\GNKRISHNAN\Documents\CODING\23EEE214_MCA\HEADERS\lcd.h
+[v _Lcd_SetBit Lcd_SetBit `(v  1 e 1 0 ]
+"62
+[v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
+"71
+[v _Lcd_Clear Lcd_Clear `(v  1 e 1 0 ]
+"77
+[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
+"98
+[v _Lcd_Start Lcd_Start `(v  1 e 1 0 ]
+"116
+[v _Lcd_Print_Char Lcd_Print_Char `(v  1 e 1 0 ]
+"132
+[v _Lcd_Print_String Lcd_Print_String `(v  1 e 1 0 ]
+"24 C:/Users/GNKRISHNAN/MPLABXProjects/MINI_PROJECT.X/final.c
+[v _ppm_lookup ppm_lookup `DC[10]ui  1 e 20 0 ]
+"36
+[v _gas_alert_counter gas_alert_counter `ui  1 e 2 0 ]
+[s S93 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"295 C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic16f877a.h
+[u S102 . 1 `S93 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES102  1 e 1 @7 ]
+"737
+[v _T2CON T2CON `VEuc  1 e 1 @18 ]
+"892
+[v _CCPR1L CCPR1L `VEuc  1 e 1 @21 ]
+"906
+[v _CCP1CON CCP1CON `VEuc  1 e 1 @23 ]
+[s S124 . 1 `uc 1 CCP1M 1 0 :4:0 
+`uc 1 CCP1Y 1 0 :1:4 
+`uc 1 CCP1X 1 0 :1:5 
+]
+"924
+[s S128 . 1 `uc 1 CCP1M0 1 0 :1:0 
+`uc 1 CCP1M1 1 0 :1:1 
+`uc 1 CCP1M2 1 0 :1:2 
+`uc 1 CCP1M3 1 0 :1:3 
+]
+[u S133 . 1 `S124 1 . 1 0 `S128 1 . 1 0 ]
+[v _CCP1CONbits CCP1CONbits `VES133  1 e 1 @23 ]
+"1152
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+"1159
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
+[s S39 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1454
+[u S48 . 1 `S39 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES48  1 e 1 @135 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"1816
+[v _PR2 PR2 `VEuc  1 e 1 @146 ]
+"2222
+[v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
+"2229
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
+"2759
+[v _RD2 RD2 `VEb  1 e 0 @66 ]
+"2762
+[v _RD3 RD3 `VEb  1 e 0 @67 ]
+"2765
+[v _RD4 RD4 `VEb  1 e 0 @68 ]
+"2768
+[v _RD5 RD5 `VEb  1 e 0 @69 ]
+"2771
+[v _RD6 RD6 `VEb  1 e 0 @70 ]
+"2774
+[v _RD7 RD7 `VEb  1 e 0 @71 ]
+"38 C:/Users/GNKRISHNAN/MPLABXProjects/MINI_PROJECT.X/final.c
+[v _main main `(v  1 e 1 0 ]
+{
+"53
+[v main@LPG_ppm LPG_ppm `ui  1 a 2 13 ]
+"41
+[v main@gas_value gas_value `ui  1 a 2 15 ]
+"61
+} 0
+"87
+[v _read_adc read_adc `(ui  1 e 2 0 ]
+{
+[v read_adc@channel channel `uc  1 p 1 wreg ]
+"89
+[v read_adc@i i `i  1 a 2 11 ]
+"88
+[v read_adc@sum sum `ul  1 a 4 7 ]
+"87
+[v read_adc@channel channel `uc  1 p 1 wreg ]
+[v read_adc@channel channel `uc  1 p 1 6 ]
+"96
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"10
+[v ___lldiv@quotient quotient `ul  1 a 4 9 ]
+"11
+[v ___lldiv@counter counter `uc  1 a 1 13 ]
+"5
+[v ___lldiv@divisor divisor `ul  1 p 4 0 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 4 ]
+"30
+} 0
+"63 C:/Users/GNKRISHNAN/MPLABXProjects/MINI_PROJECT.X/final.c
+[v _init_system init_system `(v  1 e 1 0 ]
+{
+"68
+} 0
+"98 C:\Users\GNKRISHNAN\Documents\CODING\23EEE214_MCA\HEADERS\lcd.h
+[v _Lcd_Start Lcd_Start `(v  1 e 1 0 ]
+{
+"114
+} 0
+"70 C:/Users/GNKRISHNAN/MPLABXProjects/MINI_PROJECT.X/final.c
+[v _init_pwm init_pwm `(v  1 e 1 0 ]
+{
+"75
+} 0
+"135
+[v _delay_ms delay_ms `(v  1 e 1 0 ]
+{
+[v delay_ms@ms ms `ui  1 p 2 0 ]
+"137
+} 0
+"114
+[v _check_gas_level check_gas_level `(v  1 e 1 0 ]
+{
+[v check_gas_level@gas_value gas_value `ui  1 p 2 5 ]
+"133
+} 0
+"77
+[v _pwm_set_duty pwm_set_duty `(v  1 e 1 0 ]
+{
+[v pwm_set_duty@duty duty `ui  1 p 2 0 ]
+"83
+} 0
+"77 C:\Users\GNKRISHNAN\Documents\CODING\23EEE214_MCA\HEADERS\lcd.h
+[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
+{
+[v Lcd_Set_Cursor@a a `uc  1 p 1 wreg ]
+"79
+[v Lcd_Set_Cursor@temp temp `uc  1 a 1 9 ]
+[v Lcd_Set_Cursor@y y `uc  1 a 1 8 ]
+[v Lcd_Set_Cursor@z z `uc  1 a 1 7 ]
+"77
+[v Lcd_Set_Cursor@a a `uc  1 p 1 wreg ]
+[v Lcd_Set_Cursor@b b `uc  1 p 1 4 ]
+"80
+[v Lcd_Set_Cursor@a a `uc  1 p 1 6 ]
+"96
+} 0
+"98 C:/Users/GNKRISHNAN/MPLABXProjects/MINI_PROJECT.X/final.c
+[v _calculate_lpg_ppm calculate_lpg_ppm `(ui  1 e 2 0 ]
+{
+"101
+[v calculate_lpg_ppm@rs_ro_ratio rs_ro_ratio `ui  1 a 2 8 ]
+"99
+[v calculate_lpg_ppm@voltage_mv voltage_mv `ui  1 a 2 6 ]
+"100
+[v calculate_lpg_ppm@rs rs `ui  1 a 2 4 ]
+"98
+[v calculate_lpg_ppm@adc_value adc_value `ui  1 p 2 0 ]
+"112
+} 0
+"15 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"139 C:/Users/GNKRISHNAN/MPLABXProjects/MINI_PROJECT.X/final.c
+[v _Lcd_Print_Number Lcd_Print_Number `(v  1 e 1 0 ]
+{
+"140
+[v Lcd_Print_Number@buffer buffer `[5]uc  1 a 5 5 ]
+"141
+[v Lcd_Print_Number@i i `ui  1 a 2 10 ]
+"139
+[v Lcd_Print_Number@num num `ui  1 p 2 2 ]
+"148
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwmod@counter counter `uc  1 a 1 4 ]
+"5
+[v ___lwmod@divisor divisor `ui  1 p 2 0 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 2 ]
+"25
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwdiv@quotient quotient `ui  1 a 2 10 ]
+"11
+[v ___lwdiv@counter counter `uc  1 a 1 12 ]
+"5
+[v ___lwdiv@divisor divisor `ui  1 p 2 6 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 8 ]
+"30
+} 0
+"132 C:\Users\GNKRISHNAN\Documents\CODING\23EEE214_MCA\HEADERS\lcd.h
+[v _Lcd_Print_String Lcd_Print_String `(v  1 e 1 0 ]
+{
+"134
+[v Lcd_Print_String@i i `i  1 a 2 0 ]
+"132
+[v Lcd_Print_String@a a `*.26uc  1 p 2 9 ]
+"137
+} 0
+"116
+[v _Lcd_Print_Char Lcd_Print_Char `(v  1 e 1 0 ]
+{
+[v Lcd_Print_Char@data data `uc  1 p 1 wreg ]
+"128
+[v Lcd_Print_Char@i_169 i `i  1 a 2 7 ]
+"124
+[v Lcd_Print_Char@i i `i  1 a 2 5 ]
+"118
+[v Lcd_Print_Char@Upper_Nibble Upper_Nibble `uc  1 a 1 3 ]
+[v Lcd_Print_Char@Lower_Nibble Lower_Nibble `uc  1 a 1 2 ]
+"116
+[v Lcd_Print_Char@data data `uc  1 p 1 wreg ]
+"119
+[v Lcd_Print_Char@data data `uc  1 p 1 4 ]
+"130
+} 0
+"71
+[v _Lcd_Clear Lcd_Clear `(v  1 e 1 0 ]
+{
+"75
+} 0
+"62
+[v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
+{
+[v Lcd_Cmd@a a `uc  1 p 1 wreg ]
+[v Lcd_Cmd@a a `uc  1 p 1 wreg ]
+"64
+[v Lcd_Cmd@a a `uc  1 p 1 3 ]
+"69
+} 0
+"39
+[v _Lcd_SetBit Lcd_SetBit `(v  1 e 1 0 ]
+{
+[v Lcd_SetBit@data_bit data_bit `uc  1 p 1 wreg ]
+[v Lcd_SetBit@data_bit data_bit `uc  1 p 1 wreg ]
+"41
+[v Lcd_SetBit@data_bit data_bit `uc  1 p 1 0 ]
+"60
+} 0
