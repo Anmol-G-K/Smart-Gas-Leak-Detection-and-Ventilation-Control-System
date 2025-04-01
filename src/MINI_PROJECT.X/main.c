@@ -1,7 +1,6 @@
 #include <xc.h>
 #include <stdint.h>
 #include "C:\Users\GNKRISHNAN\Documents\CODING\23EEE214_MCA\HEADERS\lcd.h"
-#include "C:\Users\GNKRISHNAN\Documents\CODING\23EEE214_MCA\HEADERS\adc.h"
 
 // Definitions
 #define RL_VALUE 10
@@ -12,7 +11,7 @@
 #define FP_SCALE (1 << FP_SHIFT)
 #define TO_FP(x) ((int16_t)((x) * FP_SCALE))
 #define FROM_FP(x) ((x) >> FP_SHIFT)
-#define PWM_FREQUENCY 5000  // 1kHz
+#define PWM_FREQUENCY 5000  // 5kHz
 #define PWM_PERIOD (_XTAL_FREQ/(PWM_FREQUENCY*4)) // For 5kHz @ 20MHz
 
 // Add these gas concentration thresholds
@@ -33,18 +32,17 @@ void system_init(void);
 void PWM_Initialize(void);
 
 // Gas sensor reading and calculation functions
-uint16_t read_mq(void);
-uint16_t calculate_resistance(uint16_t adc_value);
-uint16_t get_gas_concentration(uint16_t rs_value);
+uint8_t read_mq(void);
+uint8_t calculate_resistance(uint8_t adc_value);
+uint8_t get_gas_concentration(uint8_t rs_value);
 
 // PWM function prototypes
 void PWM_Initialize(void);
 void PWM_SetDutyCycle(uint8_t duty);
-void update_pwm_from_gas(uint16_t ppm);
+void update_pwm_from_gas(uint8_t ppm);
 
 // Utility functions
-void int_to_str(uint16_t value, char* buffer);
-
+void int_to_str(uint8_t value, char* buffer);
 
 
 // Lookup table for gas concentration (stored in program memory)
@@ -57,8 +55,7 @@ const int16_t concentration_table[] = {
 };
 #define TABLE_SIZE (sizeof(concentration_table) / sizeof(concentration_table[0]) / 2)
 
-
-void int_to_str(uint16_t value, char* buffer) {
+void int_to_str(uint8_t value, char* buffer) {
     uint8_t i = 0;
     char temp[6];
 
@@ -73,31 +70,30 @@ void int_to_str(uint16_t value, char* buffer) {
     *buffer = '\0';
 }
 
-uint16_t calculate_resistance(uint16_t adc_value) {
-    uint32_t temp;
+uint8_t calculate_resistance(uint8_t adc_value) {
+    uint8_t temp;
     if(adc_value < 1) adc_value = 1;
-    temp = (uint32_t)RL_VALUE * 1023;
+    temp = (uint8_t)RL_VALUE * 1023;
     temp = temp / adc_value;
 
     return TO_FP(temp) - TO_FP(RL_VALUE);
 
 }
 
-
-uint16_t get_gas_concentration(uint16_t rs_value) {
+uint8_t get_gas_concentration(uint8_t rs_value) {
     uint8_t i;
-    uint16_t ppm;
+    uint8_t ppm;
     
     // Simple lookup and linear interpolation
     for(i = 0; i < TABLE_SIZE - 1; i++) {
         if(rs_value >= concentration_table[i*2]) {
-            uint16_t x0 = concentration_table[i*2];
-            uint16_t x1 = concentration_table[(i+1)*2];
-            uint16_t y0 = concentration_table[i*2+1];
-            uint16_t y1 = concentration_table[(i+1)*2+1];
+            uint8_t x0 = concentration_table[i*2];
+            uint8_t x1 = concentration_table[(i+1)*2];
+            uint8_t y0 = concentration_table[i*2+1];
+            uint8_t y1 = concentration_table[(i+1)*2+1];
             
             // Linear interpolation
-            ppm = y0 + ((uint32_t)(rs_value - x0) * (y1 - y0)) / (x1 - x0);
+            ppm = y0 + ((uint8_t)(rs_value - x0) * (y1 - y0)) / (x1 - x0);
             return FROM_FP(ppm);
         }
     }
@@ -107,9 +103,9 @@ uint16_t get_gas_concentration(uint16_t rs_value) {
 
 void main(void) {
     char buff[6];
-    uint16_t rs_value, ppm;
-    uint32_t ppm_sum;
-    uint16_t ppm_avg;
+    uint8_t rs_value, ppm;
+    uint8_t ppm_sum;
+    uint8_t ppm_avg;
     uint8_t i;
     
     system_init();
@@ -142,7 +138,7 @@ void main(void) {
         }
         
         // Calculate average
-        ppm_avg = (uint16_t)(ppm_sum / AVERAGE_SAMPLES);
+        ppm_avg = (uint8_t)(ppm_sum / AVERAGE_SAMPLES);
         
         // Update PWM based on average
         update_pwm_from_gas(ppm_avg);
@@ -175,9 +171,9 @@ void main(void) {
     }
 }
 
-uint16_t read_mq(void) {
+uint8_t read_mq(void) {
     uint8_t i;
-    uint32_t sum = 0;
+    uint8_t sum = 0;
     
     // Take average of readings
     for(i = 0; i < 4; i++) {
@@ -185,7 +181,7 @@ uint16_t read_mq(void) {
         __delay_ms(20);
     }
     
-    return (uint16_t)(sum >> 2); // Divide by 4
+    return (uint8_t)(sum >> 2); // Divide by 4
 }
 
 void system_init(void) {
@@ -209,19 +205,19 @@ void PWM_Initialize(void) {
 }
 
 void PWM_SetDutyCycle(uint8_t duty) {
-    uint16_t duty_value;
+    uint8_t duty_value;
     
     if(duty > 100) duty = 100;
     
     // Calculate PWM values for the given duty cycle
-    duty_value = ((uint32_t)PR2 * duty) / 100;
+    duty_value = ((uint8_t)PR2 * duty) / 100;
     
     CCPR1L = (uint8_t)(duty_value);
     CCP1X = (duty_value & 0x02) >> 1;
     CCP1Y = duty_value & 0x01;
 }
 
-void update_pwm_from_gas(uint16_t ppm) {
+void update_pwm_from_gas(uint8_t ppm) {
     if (ppm < GAS_THRESHOLD_1) {
         PWM_SetDutyCycle(0);      // 0% duty cycle
         BUZZER = 0;               // Buzzer OFF
@@ -250,4 +246,19 @@ void update_pwm_from_gas(uint16_t ppm) {
         __delay_ms(400);
     }
 }
-    
+
+void ADC_Initialize()
+{
+  ADCON0 = 0b01000001; //ADC ON and Fosc/8 is selected
+  ADCON1 = 0b11000000; // Internal reference voltage is selected
+}
+unsigned int ADC_Read(unsigned char channel)
+{
+  ADCON0 &= 0x11000101; //Clearing the Channel Selection Bits
+  ADCON0 |= channel<<3; //Setting the required Bits
+  __delay_ms(2); //Acquisition time to charge hold capacitor
+  GO_nDONE = 1; //Initializes A/D Conversion
+  while(GO_nDONE); //Wait for A/D Conversion to complete
+  return ((ADRESH<<8)+ADRESL); //Returns Result
+}
+   
