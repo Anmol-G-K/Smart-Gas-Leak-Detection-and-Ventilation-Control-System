@@ -18,13 +18,8 @@
   - [**⚡ Outputs \& Actuators**](#-outputs--actuators)
 - [🖥️ Installation](#️-installation)
 - [🔌 Hardware Connections for Gas Leak Detection System](#-hardware-connections-for-gas-leak-detection-system)
-    - [1. MQ-6 Gas Sensor](#1-mq-6-gas-sensor)
-    - [2. Exhaust Fan (PWM Control)](#2-exhaust-fan-pwm-control)
-    - [3. LCD Display](#3-lcd-display)
-    - [4. Buzzer Alert](#4-buzzer-alert)
-    - [5. Power Supply](#5-power-supply)
-  - [🛠️ Jumper Settings Summary](#️-jumper-settings-summary)
 - [📈 System Flowchart](#-system-flowchart)
+- [](#)
 - [🤝 Contributing](#-contributing)
 - [📜 License](#-license)
 - [📩 Contact](#-contact)
@@ -84,84 +79,12 @@ It utilizes an **MQ-6 gas sensor** to detect leaks and automatically activates a
 
 ## 🔌 Hardware Connections for Gas Leak Detection System
 
-#### 1. MQ-6 Gas Sensor
-- **Digital Output:** Connect the **DOUT** pin of the MQ-6 sensor to **RB0/INT (Pin 33 of PIC16F877A)**.
-- **Trigger Logic:** The system measures how long the sensor outputs a **HIGH signal** to determine gas concentration.
-
-
-#### 2. Exhaust Fan (PWM Control)
-- **PWM Output:** Connect the **fan motor driver** to **RC2/CCP1 (Pin 17 of PIC16F877A)**.
-- **Activation Logic:** The fan is activated based on the duration of the HIGH signal from the sensor.
-- **Jumper Setting:** Short **K6 (PWM Terminal)** to enable PWM output.
-
-#### 3. LCD Display
-- **Connection:** Already integrated on the board (**PORTD and PORTC**).
-- **Pins Used:**
-  - **Data Pins:** RD0-RD7 (Port D, Pins 19-26).
-  - **Control Pins:** RC0 (RS), RC1 (RW), RC5 (EN).
-- **Adjustment:** Use the onboard contrast knob (**P1**) for visibility.
-
-#### 4. Buzzer Alert
-- **Connection:** Buzzer is pre-connected to **RE0 (Pin 8 of PIC16F877A)**.
-- **Activation:** **Buzzer triggers** when a gas leak is detected.
-
-#### 5. Power Supply
-- **Option 1:** Use the **USB port (K1)** for **5V power**.
-- **Option 2:** Use the **screw terminal (K3)** for **7-20V external DC input**.
-- **Jumper:** Set **K2** to position **1-2** for USB power or **2-3** for external DC.
-
-### 🛠️ Jumper Settings Summary
-| **Component**       | **Jumper** | **Setting**                            |
-|--------------------|-----------|--------------------------------------|
-| **Gas Sensor (DOUT)** | N/A       | Connect to RB0/INT (Pin 33)        |
-| **PWM (Fan)**       | K6        | Short to enable PWM output          |
-| **Power Source**    | K2        | **1-2** (USB) or **2-3** (External) |
-
+![Circuit Diagram](Insert_Circuit_Diagram_Image_URL_Here)
 
 ---
 
 ## 📈 System Flowchart
-```mermaid
-graph TD;
-    %% System Initialization
-    A[System Initialization] --> A1[Initialize Microcontroller and IO]
-    A1 --> A2[Initialize LCD ADC PWM and Buzzer Pin]
-    A2 --> B[Main Loop]
-
-    %% Main Loop
-    B --> C[Read Gas Sensor ADC Value]
-    C --> D[Calculate Sensor Resistance RS]
-    D --> E[Determine Gas Concentration PPM]
-    E --> F{Compare With Thresholds}
-
-    %% Decision Process for Fan and Buzzer Control
-    F -->|PPM < GAS_THRESHOLD_1| G1[Fan Off]
-
-
-    F -->|PPM < GAS_THRESHOLD_2| H1[Fan 25 Percent Duty Cycle]
-  
-
-    F -->|PPM < GAS_THRESHOLD_3| I1[Fan 50 Percent Duty Cycle]
-
-
-    F -->|PPM < GAS_THRESHOLD_4| J1[Fan 75 Percent Duty Cycle]
-
-    F -->|PPM >= GAS_THRESHOLD_5| K1[Fan 100 Percent Duty Cycle]
-    K1 --> K2[Buzzer On Alert]
-
-    %% Display and Logging
-    K2 --> L1[Trigger Warning on LCD]
-    L1 --> L2[Log PPM Value and Alert Status]
-    
-    G1 --> M[Update LCD Display with Normal Status]
-    H1 --> M
-    I1 --> M
-    J1 --> M
-    L2 --> M
-
-    M --> N[Delay and Repeat]
-
-```
+[![System Flowchart](Smart-Gas-Leak-Detection-and-Ventilation-Control-System\designs\MCA-2025-03-31-152404.png)](https://github.com/Anmol-G-K/Smart-Gas-Leak-Detection-and-Ventilation-Control-System/blob/e0f4cf79d11e2cc54357b8dd173b5a9e6a6b464b/designs/MCA-2025-03-31-152404.png)
 ---
 
 ## 🤝 Contributing  
