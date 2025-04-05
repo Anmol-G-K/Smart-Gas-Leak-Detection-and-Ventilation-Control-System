@@ -19,8 +19,6 @@
 - [🖥️ Installation](#️-installation)
 - [🔌 Hardware Connections for Gas Leak Detection System](#-hardware-connections-for-gas-leak-detection-system)
 - [📈 System Flowchart](#-system-flowchart)
-- [](#)
-- [🤝 Contributing](#-contributing)
 - [📜 License](#-license)
 - [📩 Contact](#-contact)
 
@@ -34,9 +32,8 @@ It utilizes an **MQ-6 gas sensor** to detect leaks and automatically activates a
 ---
 
 ## 👥 Project Members  
-- **Anmol Govindarajapuram Krishnan** – CB.EN.U4EEE23103  
-- **Karthik K** – CB.EN.U4EEE23116  
-
+- **Anmol Govindarajapuram Krishnan** – [Linkedin](https://www.linkedin.com/in/anmolkrish/)
+- **Karthik K** – [Linkedin]()
 ---
 ## 🚀 Features  
 - **Automatic gas leak detection**  
@@ -79,16 +76,13 @@ It utilizes an **MQ-6 gas sensor** to detect leaks and automatically activates a
 
 ## 🔌 Hardware Connections for Gas Leak Detection System
 
-![Circuit Diagram](Insert_Circuit_Diagram_Image_URL_Here)
+![Circuit Diagram](\designs\ckt.bmp)
 
 ---
 
 ## 📈 System Flowchart
-[![System Flowchart](Smart-Gas-Leak-Detection-and-Ventilation-Control-System\designs\MCA-2025-03-31-152404.png)](https://github.com/Anmol-G-K/Smart-Gas-Leak-Detection-and-Ventilation-Control-System/blob/e0f4cf79d11e2cc54357b8dd173b5a9e6a6b464b/designs/MCA-2025-03-31-152404.png)
----
 
-## 🤝 Contributing  
-- Contribution guidelines will be added soon.  
+![System Flowchart](\designs\flowchart.png)
 
 ---
 
