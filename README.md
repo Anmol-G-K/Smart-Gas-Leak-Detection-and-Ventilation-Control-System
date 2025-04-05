@@ -1,7 +1,5 @@
 ![C Language](https://img.shields.io/badge/Language-C-blue) ![Platform](https://img.shields.io/badge/Platform-Embedded_Systems-red) ![Microcontroller](https://img.shields.io/badge/Microcontroller-PIC16F877A-blue) ![MPLAB IDE](https://img.shields.io/badge/IDE-MPLAB_IDE-orange) ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-
-
 <h1 align="center">Smart Gas Leak Detection and Ventilation Control System</h1>
 
 <p align="center">
