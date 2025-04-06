@@ -41,7 +41,7 @@ It is developed using a **PIC16F877A microcontroller**, programmed with MPLAB ID
 ## 👥 Project Members
 
 - **Anmol Govindarajapuram Krishnan** – [LinkedIn](https://www.linkedin.com/in/anmolkrish/)
-- **Karthik K** – [LinkedIn]()
+- **Karthik K** – [LinkedIn](https://www.linkedin.com/in/karthik-krishnamurthi)
 
 ---
 
@@ -123,5 +123,5 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 For inquiries, suggestions, or collaborations, feel free to reach out:
 
 - **Anmol Govindarajapuram Krishnan** – [LinkedIn](https://www.linkedin.com/in/anmolkrish/)
-- **Karthik K** – [LinkedIn]()
+- **Karthik K** – [LinkedIn](https://www.linkedin.com/in/karthik-krishnamurthi)
 
