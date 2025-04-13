@@ -114,7 +114,7 @@ It is developed using a **PIC16F877A microcontroller**, programmed with MPLAB ID
 
 ## 📜 License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.  
 
 ---
 
