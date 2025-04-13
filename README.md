@@ -99,7 +99,7 @@ It is developed using a **PIC16F877A microcontroller**, programmed with MPLAB ID
 ## 🔌 Hardware Connections for Gas Leak Detection System
 
 <p align="center">
-  <img src="designs/ckt.bmp" width="600">
+  <img src="designs/ckt.BMP" width="600">
 </p>
 
 ---
